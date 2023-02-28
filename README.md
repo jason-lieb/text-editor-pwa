@@ -8,7 +8,7 @@ A basic text editor PWA using workbox service workers, local storage, and indexe
 
 ## Deployed Link
 
-[heroku link](https://just-another-text-editor-3.herokuapp.com/)
+[Deployed Application](https://just-another-text-editor-3.herokuapp.com/)
 
 ## Table of Contents
 
