@@ -1,6 +1,6 @@
 import { openDB } from 'idb'
 
-const initdb = async () =>
+const initdb = async () => {
   openDB('jate', 1, {
     upgrade(db) {
       if (db.objectStoreNames.contains('jate')) {
@@ -11,34 +11,23 @@ const initdb = async () =>
       console.log('jate database created')
     },
   })
+}
 
-// TODO: Add logic to a method that accepts some content and adds it to the database
 export const putDb = async (content) => {
   const todosDb = await openDB('jate', 1)
-  // console.log(todosDb)
-  const tx = todosDb.transaction('jate')
-  // console.log(tx)
+  const tx = todosDb.transaction('jate', 'readwrite')
   const store = tx.objectStore('jate')
-  // console.log(store)
-  const request = store.put(content)
-  // console.log(request)
+  const request = store.put({ id: 1, content: content })
   const result = await request
-  console.log(result)
   return result
 }
 
-// TODO: Add logic for a method that gets all the content from the database
 export const getDb = async () => {
   const todosDb = await openDB('jate', 1)
-  // console.log(todosDb)
   const tx = todosDb.transaction('jate', 'readonly')
-  // console.log(tx)
   const store = tx.objectStore('jate')
-  // console.log(store)
-  const request = store.getAll()
-  // console.log(request)
+  const request = store.get(1)
   const result = await request
-  console.log(result)
   return result
 }
 
